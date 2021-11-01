@@ -1,0 +1,48 @@
+GET ALL EMPLOYEES --
+
+DELIMITER //
+create procedure sp_get_all_employees()
+BEGIN
+	select * from employee;
+END //
+DELIMITER ;
+
+
+GET EMPLOYEE BY ID --
+
+DELIMITER //
+create procedure sp_get_employee_by_id(IN emplid integer)
+BEGIN
+	select * from employee where id = emplid;
+END //
+DELIMITER ;
+
+
+INSERT NEW EMPLOYEE --
+
+DELIMITER //
+create procedure sp_add_employee(IN newname char(50), IN newemail char(50), newage integer)
+BEGIN
+	insert into employee (name, email, age) values (newname, newemail, newage);
+END //
+DELIMITER ;
+
+
+UPDATE EXISTING EMPLOYEE --
+
+DELIMITER //
+create procedure sp_update_employee(IN emplid integer, IN newname char(50), IN newemail char(50), newage integer)
+BEGIN
+	update employee set name = newname, email = newemail, age = newage where id = emplid;
+END //
+DELIMITER ;
+
+
+DELETE EMPLOYEE --
+
+DELIMITER //
+create procedure sp_delete_employee(IN emplid integer)
+BEGIN
+	delete from employee where id = emplid;
+END //
+DELIMITER ;
